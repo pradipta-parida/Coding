@@ -1,0 +1,34 @@
+Q> What is Salesforce?
+A> Salesforce is a company that makes cloud-based software designed to help businesses find more prospects,
+   close more deals and wow customers with amazing servicrs
+
+Q> What is CRM?
+A> CRM = Customer Relationship Management
+   CRM is an application used to automate sales and marketing functions by using a software called CRM software 
+
+Q> Which architecture does Salesforce depend on?
+A> Salesforce architecture is the multi-layer architecture and it follows MVC architecture
+
+   M - Model (basically contains custom objects and standard objects) 
+   V - View (page layouts, screen flows, visual force, lightning web componenet and aura)
+   C- Controller (standard and custom controllers)
+
+Q> What are different edition of Salesforce?
+A> 1. Essential Edition
+   2. Professional Edition 
+   3. Enterprise Edition
+   4. Unlimited Edition
+   5. Enterprise Edition
+
+Q> How many types of Portal are available in Salesforce?
+A> 1. Self-Service Portal
+   2. Customer Portal
+   3. Partner Portal
+
+Q> What is an object in Salesforce?
+A> Salesforce Objects are database tables that permit you to store data that is specific to an organization (stores organization data).
+   Objects consists of set of Fields and we store data against the field. 
+   Common business objects like Account, Contact, Lead and opportunity are all Standard Objects.
+   Custom objects are objects that you create to store information that's specific to your company or industry.
+   
+Q> 

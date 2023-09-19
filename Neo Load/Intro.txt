@@ -1,0 +1,25 @@
+Neo Load - Performance Testing
+---------------------------------------------------
+> What is a workflow?
+
+	A series of user actions is called as a workflow.
+	e.g; Launch google --> Search Elon Musk --> Click Elon Musk Link
+	
+> Transaction -> A group of requests belong to one user action. User Actions known as Transaction.
+                  Transaction is the keyword used in Performance Testing.
+
+> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
