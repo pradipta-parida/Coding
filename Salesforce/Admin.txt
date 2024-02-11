@@ -1,6 +1,23 @@
 Q> What is Salesforce?
 A> Salesforce is a company that makes cloud-based software designed to help businesses find more prospects,
-   close more deals and wow customers with amazing servicrs
+   close more deals and wow customers with amazing services
+
+   Salesforce is a cloud computing platform who provide service as SaaS(Software as a Service) and PaaS (Platform as a Service).
+
+   So, If you are delivering a software application to your clients/customers then you are called SaaS. e.g; IOT,CRM, Analytics
+   and, If you are providing a paltform where client's can build their customized software application on that platform then its called PaaS. e.g; like AWS
+
+   Benefits of Cloud Computing:-
+   . Cheaper
+   . Scalable
+   . Collaboration
+   . Hassle-Free
+
+Q> What is Cloud Computing?
+A> Its the use of remote servers to store,manage & process data, rather than on a local server/personal computer.
+   Working of Cloud-Computing:- (Cloud means over the internet)
+   . Software apps delivered on the cloud (by a Vendor- AWS, Salesforce,Azure)
+   . Software apps accessible via the cloud (Client)
 
 Q> What is CRM?
 A> CRM = Customer Relationship Management
@@ -27,8 +44,124 @@ A> 1. Self-Service Portal
 
 Q> What is an object in Salesforce?
 A> Salesforce Objects are database tables that permit you to store data that is specific to an organization (stores organization data).
-   Objects consists of set of Fields and we store data against the field. 
-   Common business objects like Account, Contact, Lead and opportunity are all Standard Objects.
-   Custom objects are objects that you create to store information that's specific to your company or industry.
+   Objects consists of set of Fields(columns) and we store data against the field. 
    
-Q> 
+   'Objects' represents database tables
+   'Fields' represents columns
+   'Records' represents rows.
+   
+Q> What are the different objects in Salesforce?
+A> 1. Standard Object - Common business objects like Account, Contact, Lead and opportunity are all Standard Objects that comes by default with the Salesforce platform
+   2. Custom Object - that you create to store information thats specific to your company/industry. It is used for sharing the data.
+   3. External Object - 
+
+Q> What is Profile?
+A> A Profile is a group of settings and permissions that define what a user can do in Salesforce
+   Types of User Profile in Salesforce;
+   1. Standard Profile - already provided by the Salesforce
+   2. Custom Profile - can be created by the users based on their specific requirements
+
+Q> What is a Role?
+A> A role is a record-level access in salesforce that defines the visibility access of a user
+
+Q> What are Organization by default settings?
+A> It defines the default access level for an objects records with organization-wide sharing settings
+
+Q> What is sharing rule?
+A> Sharing rules in the salesforce is "the rules that must be followed in order to grant access to information(records) and data to various clients in a certain
+   company or group of areas."
+
+Q> What is Manual Sharing?
+A> In Salesforce Manual Sharing, records are shared individually with other users by using the share button on the record.
+   It gives access to other users access to certain type of records including accounts, contacts, leads.
+   e.g; If you grant another user access to an account
+   , the user automatically has access to all the opportunities and cases associated with that account 
+
+Q> What is Permission Set?
+A> A Permission Set is a collection of settings and permissions that give user access to various tools and functions.
+   A user can have one Profile but they can have multiple permission sets depending on salesforce edition 
+
+Q> What are different types of Relationship in Salesforce?
+A> 1. Master-detail relationship - is a strongly coupled relationship among saleforce objects, which means if a master record gets deleted, then the child record also gets deleted.
+                                   Data from these objects can be joined in one report using Master detail relationships. The Master object and the Detail Object and other lookup object
+
+   2. Lookup relationship - is a loosely coupled relationship among Salesforce objects, which means even if a parent record gets deleted, the child records remain in the system.
+                            A lookup relationship links two objects so that you can look up one object from the related items on another one to one or one to mainy lookup relationships
+                            are possible because a single account can have many related contacts the account to contact relationships is one to many 
+
+   3. Self-relationship - is a lookup relationship to the same object. e.g; we have a field on account which is parent account that allows us to choose any account for being a parent
+                          account of the existing ones 
+
+   4. External lookup relationship - 
+   5. Indirect lookup relationship
+   6. Many-to-many relationship
+   7. Hierarchical relationship
+
+Q> What is Roll-Up Summary?
+A> It is a read-only field which is used to calculate the count of child records, Sum , Minimum, Maximum, of a field on the child object
+
+Q> What is a Junction Object?
+A> It is a Saleforce object that contains many-to-many relationships b/w two related objects
+
+Q> What is a Flow?
+A> A tool for automating complex business processes is known as Flow
+
+Q> What is Process Builder? 
+A> It is basically an automated tool that allows you to control the order of actions or evaluate the criteria for a record.
+   Process Builder supports three types of processes for your automation needs;
+   1. Record Change Process - when a record is created/updated
+   2. Even Process - which starts when a platform even message is received 
+   3. Invokable Process - which starts when someting else like another process invokes it.
+
+Q> What is Workflow?
+A> Workflow in salesforce is basically a container or business logic engine which automates certain actions based on particular criteria.
+   With the exception of the first and last steps, each step in a workflow has specific step before it and a specific step after it.
+   In a linear workflow, the fist step is usually initiated by the external event. 
+
+Q> What is the Maximum number of data records that can be shared? 
+A> A file can be shared a maximum of 2000 times. This count includes shares with records,people and groups.
+
+Q> How many Fields can be created in one object?
+A> In the Unlimited edition, we can create upto 500 fields per object. 
+   In the Professional edition, we can create upto 100 custom fields per object.
+
+Q> How many workflows can be created in one object?
+A> By default, each object is limited to 50 workflows.
+
+Q> What is Mixed dml error?
+A> A mixed dml Operation Error comes when you try to perorm DML operations on setup and non-setup objects in a single transaction.
+   To avoid this error, we should perorm DML operations on Standard or Custom object records in different transactions.
+
+Q> What is Schema Builder?
+A> Schema Builder is a tool that lets you visualize and edit you data model without having to move from page to page.
+   The Schema Builder can retrieve all fields from object perform basic impact analysis on changes to an object and displays
+   all dependencies on an object.
+
+Scenario Based Question :-
+================================
+
+Q> What kind of relationships does Account and Contact have?
+A> The type of relationship that exists between Account and Contact is Cascade delete.
+   You can create a contact without an account, it shows up there is a lookup relationship . 
+   If you have created contact with an account and if you delete the account the contact will be deleted and this shows the master detail relationship.
+
+Q> I want to delete 3000 customer records but do not want anyone else to recover them , What can i do?
+A> Salesforce makes it easy to bulk delete records permanently using HARD DELETE option.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

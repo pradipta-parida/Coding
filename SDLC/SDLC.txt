@@ -1,0 +1,17 @@
+> SDLC Phase - (Sequence)
+    1. Requirement Gathering and Analysis
+    2. Design
+    3. Development/Coding
+    4. Testing
+    5. Deployment
+    6. Maintenance/Support (Longest phase of the SDLC)
+    
+> 
+
+
+
+
+
+
+
+

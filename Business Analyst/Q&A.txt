@@ -1,0 +1,24 @@
+Q> Who are the stakeholders? And types of stakeholders
+A> A stakeholder is a person or a group who has vested interests in the ongoing project
+   3 types of stakeholders;
+   . Primary stakeholder
+   . Secondary stakeholder
+   . Key stakeholder
+
+Q> What is the role of a Business Analyst?
+A> BA have a key role in the organisation performing financial operations. The action and decisions taken by the business 
+   analysts will impact the growth of the organization. 
+
+Q> Can you list out the skills one should have as a BA?
+A> . Technical Skills - MS Office suite, Google Docs, Database Knowledge, SQL
+   . Non-Technical Skills - Documentation(Confluence tool), Management skills, Requirement Analysis(Jira, Power BI)
+
+Q> What is swot analysis and give a business application  example?
+A> SWOT = Strengths, Weaknesses, Opportunities and Threats
+   It is the duty of BA to create a startegy for the organization based on the result of a swot analysis
+
+Q> 
+A>
+
+
+
