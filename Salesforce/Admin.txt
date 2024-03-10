@@ -21,7 +21,7 @@ A> Its the use of remote servers to store,manage & process data, rather than on 
 
 Q> What is CRM?
 A> CRM = Customer Relationship Management
-   CRM is an application used to automate sales and marketing functions by using a software called CRM software 
+   CRM is an approach to managing a company's interaction with current and potential customers.
 
 Q> Which architecture does Salesforce depend on?
 A> Salesforce architecture is the multi-layer architecture and it follows MVC architecture
