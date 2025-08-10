@@ -1,0 +1,245 @@
+***
+Which of the following is an advantage of using PySpark over pandas for data processing on large datasets?
+PySpark can distribute data and computations across multiple nodes, enabling faster processing of large datasets.
+
+//
+Creating a SparkSession
+Let's start with creating a new SparkSession. In this course, you will be usually provided with one, but creating a new one or getting an existing one is a must-have skill!
+
+Import SparkSession from pyspark.sql.
+Make a new SparkSession called "my_spark" using SparkSession.builder.getOrCreate().
+Print my_spark to the console to verify it's a SparkSession.
+
+# Import SparkSession from pyspark.sql
+from pyspark.sql import SparkSession
+
+# Create my_spark
+my_spark = SparkSession.builder.appName("my_spark").getOrCreate()
+
+# Print my_spark
+print(my_spark)
+
+O/P:-----
+    <pyspark.sql.session.SparkSession object at 0x7fa392628100>
+
+//
+
+Loading census data
+Let's start creating your first PySpark DataFrame! The file adult_reduced.csv contains a grouping of adults based on a variety of demographic categories. These data have been adapted from the US Census. There are a total of 32562 groupings of adults.
+
+We should load the csv and see the resulting schema.
+
+Data dictionary:
+
+Variable	  Description
+age	         Individual age
+education_num	Education by degree
+marital_status	Marital status
+occupation	     Occupation
+income	         Categorical income
+
+Create a PySpark DataFrame from the"adult_reduced.csv" file using the spark.read.csv() method.
+Show the resulting DataFrame.
+
+# Read in the CSV
+census_adult = spark.read.csv("adult_reduced.csv")
+
+# Show the DataFrame
+census_adult.show()
+
+O/P:-------
+output:
+    +---+-------------+--------------+-----------------+--------+
+    |_c0|          _c1|           _c2|              _c3|     _c4|
+    +---+-------------+--------------+-----------------+--------+
+    |age|education.num|marital.status|       occupation|  income|
+    | 90|            9|       Widowed|                ?|50000.00|
+    | 82|            9|       Widowed|  Exec-managerial|50000.00|
+    | 66|           10|       Widowed|                ?|36526.00|
+    | 54|            4|      Divorced|Machine-op-inspct|50000.00|
+    | 41|           10|     Separated|   Prof-specialty|50000.00|
+    | 34|            9|      Divorced|    Other-service|50000.00|
+    | 38|            6|     Separated|     Adm-clerical|27800.00|
+    | 74|           16| Never-married|   Prof-specialty|12400.00|
+    | 68|            9|      Divorced|   Prof-specialty|75000.00|
+    | 41|           10| Never-married|     Craft-repair|89000.00|
+    | 45|           16|      Divorced|   Prof-specialty|24000.00|
+    | 38|           15| Never-married|   Prof-specialty|25000.00|
+    | 52|           13|       Widowed|    Other-service|83975.00|
+    | 32|           14|     Separated|  Exec-managerial|85937.00|
+    | 51|           16| Never-married|                ?| 9098.00|
+    | 46|           15|      Divorced|   Prof-specialty|45690.00|
+    | 45|            7|      Divorced| Transport-moving|32532.00|
+    | 57|           14|      Divorced|  Exec-managerial|65000.00|
+    | 22|           12| Never-married|Handlers-cleaners|12412.00|
+    +---+-------------+--------------+-----------------+--------+
+    only showing top 20 rows
+
+//
+Reading a CSV and performing aggregations
+You have a spreadsheet of Data Scientist salaries from companies ranging is size from small to large. You want to see if there is a major difference between average salaries grouped by company size.
+
+Remember, there's already a SparkSession called spark in your workspace!
+
+Load a csv file as a DataFrame and infer the schema.
+Return the count of the number of rows.
+Group by the column company_size and calculate the average salary with salary_in_usd.
+
+# Load the CSV file into a DataFrame
+salaries_df = spark.read.csv("salaries.csv", header=True, inferSchema=True)
+
+# Count the total number of rows
+row_count = salaries_df.count()
+print(f"Total rows: {row_count}")
+
+# Group by company size and calculate the average of salaries
+salaries_df.groupBy("company_size").agg({"salary_in_usd": "avg"}).show()
+salaries_df.show()
+
+O/P:---
+
+Total rows: 37234
+    +------------+------------------+
+    |company_size|avg(salary_in_usd)|
+    +------------+------------------+
+    |           L|147706.87870434183|
+    |           M|161471.45763426356|
+    |           S|          88036.29|
+    +------------+------------------+
+    
+    +---------+----------------+---------------+--------------------+------+---------------+-------------+------------------+------------+----------------+------------+
+    |work_year|experience_level|employment_type|           job_title|salary|salary_currency|salary_in_usd|employee_residence|remote_ratio|company_location|company_size|
+    +---------+----------------+---------------+--------------------+------+---------------+-------------+------------------+------------+----------------+------------+
+    |     2020|              EN|             FT| Azure Data Engineer|100000|            USD|       100000|                MU|           0|              MU|           S|
+    |     2020|              EN|             CT|  Staff Data Analyst| 60000|            CAD|        44753|                CA|          50|              CA|           L|
+    |     2020|              SE|             FT|Staff Data Scientist|164000|            USD|       164000|                US|          50|              US|           M|
+    |     2020|              EN|             FT|        Data Analyst| 42000|            EUR|        47899|                DE|           0|              DE|           L|
+    |     2020|              EX|             FT|      Data Scientist|300000|            USD|       300000|                US|         100|              US|           L|
+    |     2020|              MI|             CT|  Sales Data Analyst| 60000|            USD|        60000|                NG|           0|              NG|           M|
+    |     2020|              EX|             FT|  Staff Data Analyst| 15000|            USD|        15000|                NG|           0|              CA|           M|
+    |     2020|              MI|             FT|Business Data Ana...| 95000|            USD|        95000|                US|           0|              US|           M|
+    |     2020|              EN|             FT|        Data Analyst| 20000|            EUR|        22809|                PT|         100|              PT|           M|
+    |     2020|              EN|             FT|      Data Scientist| 43200|            EUR|        49268|                DE|           0|              DE|           S|
+    |     2020|              SE|             FT|Machine Learning ...|157000|            CAD|       117104|                CA|          50|              CA|           L|
+    |     2020|              EN|             FT|       Data Engineer| 48000|            EUR|        54742|                PK|         100|              DE|           L|
+    |     2020|              MI|             FT|Product Data Analyst| 20000|            USD|        20000|                HN|           0|              HN|           S|
+    |     2020|              MI|             FT|       Data Engineer| 51999|            EUR|        59303|                DE|         100|              DE|           S|
+    |     2020|              EN|             FT|   Big Data Engineer| 70000|            USD|        70000|                US|         100|              US|           L|
+    |     2020|              SE|             FT|      Data Scientist| 60000|            EUR|        68428|                GR|         100|              US|           L|
+    |     2020|              MI|             FT|  Research Scientist|450000|            USD|       450000|                US|           0|              US|           M|
+    |     2020|              MI|             FT|        Data Analyst| 41000|            EUR|        46759|                FR|          50|              FR|           L|
+    |     2020|              MI|             FT|       Data Engineer| 65000|            EUR|        74130|                AT|          50|              AT|           L|
+    |     2020|              MI|             FT|      Data Scientist|103000|            USD|       103000|                US|         100|              US|           L|
+    +---------+----------------+---------------+--------------------+------+---------------+-------------+------------------+------------+----------------+------------+
+    only showing top 20 rows
+
+//
+Filtering by company
+Using that same dataset from the last exercise, you realized that you only care about the jobs that are entry level ("EN") in Canada ("CA").
+What does the salaries look like there? Remember, there's already a SparkSession called spark in your workspace!
+
+Filter to subset the DataFrame to where company_location is "CA".
+Calculate the average of the salary_in_usd column.
+Show the result!
+
+# Average salary for entry level in Canada
+CA_jobs = ca_salaries_df.filter(ca_salaries_df["company_location"] == "CA").filter(ca_salaries_df['experience_level']
+ == "EN").groupBy().avg("salary_in_usd")
+
+# Show the result
+CA_jobs.show()
+
+O/P:------
+output:
+    +------------------+
+    |avg(salary_in_usd)|
+    +------------------+
+    | 97330.53932584269|
+    +------------------+
+
+//
+Infer and filter
+Imagine you have a census dataset that you know has a header and a schema. Let's load that dataset and let PySpark infer the schema. What do you see if you filter on adults over 40?
+
+Remember, there's already a SparkSession called spark in your workspace!
+
+Load a JSON file adults.json.
+Filter the data to include adults over the age of 40.
+Show the results.
+
+# Load the dataframe
+census_df = spark.read.json("adults.json")
+
+# Filter rows based on age condition
+salary_filtered_census = census_df.filter(census_df["age"]>40)
+
+# Show the result
+salary_filtered_census.show()
+
+O/P:-------
+output:
+    +---+-------------+------+------------------+-----------------+
+    |age|education.num|income|    marital.status|       occupation|
+    +---+-------------+------+------------------+-----------------+
+    | 90|            9| <=50K|           Widowed|                ?|
+    | 82|            9| <=50K|           Widowed|  Exec-managerial|
+    | 66|           10| <=50K|           Widowed|                ?|
+    | 54|            4| <=50K|          Divorced|Machine-op-inspct|
+    | 41|           10| <=50K|         Separated|   Prof-specialty|
+    | 74|           16|  >50K|     Never-married|   Prof-specialty|
+    | 68|            9| <=50K|          Divorced|   Prof-specialty|
+    | 41|           10|  >50K|     Never-married|     Craft-repair|
+    | 45|           16|  >50K|          Divorced|   Prof-specialty|
+    | 52|           13|  >50K|           Widowed|    Other-service|
+    | 51|           16|  >50K|     Never-married|                ?|
+    | 46|           15|  >50K|          Divorced|   Prof-specialty|
+    | 45|            7|  >50K|          Divorced| Transport-moving|
+    | 57|           14|  >50K|          Divorced|  Exec-managerial|
+    | 61|            9| <=50K|          Divorced|            Sales|
+    | 51|           10| <=50K|Married-civ-spouse| Transport-moving|
+    | 61|            9| <=50K|Married-civ-spouse|                ?|
+    | 49|            3| <=50K|Married-civ-spouse|    Other-service|
+    | 59|            6|  >50K|           Widowed|  Exec-managerial|
+    | 52|           15|  >50K|          Divorced|  Exec-managerial|
+    +---+-------------+------+------------------+-----------------+
+    only showing top 20 rows
+
+//
+
+Schema writeout
+We've loaded Schemas multiple ways now. So lets define a schema directly. We'll use a Data dictionary:
+
+Variable	Description
+age	         Individual age
+education_num	Education by degree
+marital_status	Marital status
+occupation	      Occupation
+income	         Categorical income
+
+Specify the data schema, giving columns names (age,education_num,marital_status,occupation, and income) and column types, setting a comma for the sep= argument.
+Read data from a comma-delimited file called adult_reduced_100.csv.
+Print the schema for the resulting DataFrame.
+
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
+
+# Fill in the schema with the columns you need from the exercise instructions
+schema = StructType([StructField("age",IntegerType()),
+                     StructField("education_num",IntegerType()),
+                     StructField("marital_status",StringType()),
+                     StructField("occupation",StringType()),
+                     StructField("income",StringType())
+                    ])
+
+# Read in the CSV, using the schema you defined above
+census_adult = spark.read.csv("adult_reduced_100.csv", sep=',', header=False, schema=schema)
+
+output:
+    root
+     |-- age: integer (nullable = true)
+     |-- education_num: integer (nullable = true)
+     |-- marital_status: string (nullable = true)
+     |-- occupation: string (nullable = true)
+     |-- income: string (nullable = true)
+
+//
+
