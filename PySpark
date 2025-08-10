@@ -242,4 +242,97 @@ output:
      |-- income: string (nullable = true)
 
 //
+Handling missing data with fill and drop
+Oh my… You have a lot of missing values in this dataset! Let's clean it up! With the loaded CSV file, drop rows with any null values, and show the results!
+
+Remember, there's already a SparkSession called spark in your workspace!
+
+Drop any rows with null values in the census_df DataFrame.
+Show the resulting DataFrame.
+
+# Drop rows with any nulls
+census_cleaned = census_df.na.drop()
+
+# Show the result
+census_cleaned.show()
+
++---+-------------+------------------+-----------------+------+
+|_c0|          _c1|               _c2|              _c3|   _c4|
++---+-------------+------------------+-----------------+------+
+|age|education.num|    marital.status|       occupation|income|
+| 82|            9|           Widowed|  Exec-managerial| <=50K|
+| 54|            4|          Divorced|Machine-op-inspct| <=50K|
+| 38|            6|         Separated|     Adm-clerical| <=50K|
+| 68|            9|          Divorced|   Prof-specialty| <=50K|
+| 41|           10|     Never-married|     Craft-repair|  >50K|
+| 45|           16|          Divorced|   Prof-specialty|  >50K|
+| 38|           15|     Never-married|   Prof-specialty|  >50K|
+| 52|           13|           Widowed|    Other-service|  >50K|
+| 32|           14|         Separated|  Exec-managerial|  >50K|
+| 45|            7|          Divorced| Transport-moving|  >50K|
+| 57|           14|          Divorced|  Exec-managerial|  >50K|
+| 34|           13|         Separated|            Sales|  >50K|
+| 37|           13|     Never-married|  Exec-managerial|  >50K|
+| 29|            7|         Separated|            Sales| <=50K|
+| 61|            9|          Divorced|            Sales| <=50K|
+| 51|           10|Married-civ-spouse| Transport-moving| <=50K|
+| 21|           11|Married-civ-spouse|     Craft-repair| <=50K|
+| 33|            2|Married-civ-spouse|     Craft-repair| <=50K|
+| 49|            3|Married-civ-spouse|    Other-service| <=50K|
++---+-------------+------------------+-----------------+------+
+only showing top 20 rows
+
+//
+
+Column operations - creating and renaming columns
+The census dataset is still not quite showing everything you want it to. Let's make a new synthetic column by adding a new column based on existing columns, and rename it for clarity.
+
+Remember, there's already a SparkSession called spark in your workspace!
+
+Create a new column, "weekly_salary", by dividing the "income" column by 52.
+Rename the "age" column to "years".
+Show the resulting DataFrame.
+
+# Create a new column 'weekly_salary'
+census_df_weekly = census_df.withColumn("weekly_salary", census_df.income / 52)
+
+# Rename the 'age' column to 'years'
+census_df_weekly = census_df_weekly.withColumnRenamed("age", "years")
+
+# Show the result
+census_df_weekly.show()
+
++-----+-------------+--------------+-----------------+-------+------------------+
+|years|education.num|marital.status|       occupation| income|     weekly_salary|
++-----+-------------+--------------+-----------------+-------+------------------+
+|   90|            9|       Widowed|                ?|50000.0| 961.5384615384615|
+|   82|            9|       Widowed|  Exec-managerial|50000.0| 961.5384615384615|
+|   66|           10|       Widowed|                ?|36526.0| 702.4230769230769|
+|   54|            4|      Divorced|Machine-op-inspct|50000.0| 961.5384615384615|
+|   41|           10|     Separated|   Prof-specialty|50000.0| 961.5384615384615|
+|   34|            9|      Divorced|    Other-service|50000.0| 961.5384615384615|
+|   38|            6|     Separated|     Adm-clerical|27800.0| 534.6153846153846|
+|   74|           16| Never-married|   Prof-specialty|12400.0|238.46153846153845|
+|   68|            9|      Divorced|   Prof-specialty|75000.0|1442.3076923076924|
+|   41|           10| Never-married|     Craft-repair|89000.0|1711.5384615384614|
+|   45|           16|      Divorced|   Prof-specialty|24000.0|461.53846153846155|
+|   38|           15| Never-married|   Prof-specialty|25000.0| 480.7692307692308|
+|   52|           13|       Widowed|    Other-service|83975.0|1614.9038461538462|
+|   32|           14|     Separated|  Exec-managerial|85937.0|1652.6346153846155|
+|   51|           16| Never-married|                ?| 9098.0|174.96153846153845|
+|   46|           15|      Divorced|   Prof-specialty|45690.0| 878.6538461538462|
+|   45|            7|      Divorced| Transport-moving|32532.0| 625.6153846153846|
+|   57|           14|      Divorced|  Exec-managerial|65000.0|            1250.0|
+|   22|           12| Never-married|Handlers-cleaners|12412.0|238.69230769230768|
+|   34|           13|     Separated|            Sales|50000.0| 961.5384615384615|
++-----+-------------+--------------+-----------------+-------+------------------+
+only showing top 20 rows
+
+//
+
+
+
+
+
+
 
