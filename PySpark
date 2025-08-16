@@ -666,5 +666,192 @@ O/P:--------
 
 //
 
+Aggregating in PySpark
+Now you're ready to do some aggregating of your own! You're going to use a salary dataset that you have already used. Let's see what aggregations you can create! A SparkSession called spark is already in your workspace, along with the Spark DataFrame salaries_df.
+
+Find the minimum salary at a US, Small company - performing the filtering by referencing the column directly ("salary_in_usd"), not passing a SQL string.
+Find the maximum salary at a US, Large company, denoted by a "L" - performing the filtering by referencing the column directly ("salary_in_usd"), not passing a SQL string.
+
+Hint
+Use the the .min() and .max() methods.
+Pass the name of a column as a string, e.g. .max("col").
+
+# Find the minimum salaries for small companies
+salaries_df.filter(salaries_df.company_size == "S").groupBy().min("salary_in_usd").show()
+
+# Find the maximum salaries for large companies
+salaries_df.filter(salaries_df.company_size == "L").groupBy().max("salary_in_usd").show()
+
+O/P:----------
+
++------------------+
+|min(salary_in_usd)|
++------------------+
+|             15809|
++------------------+
+
++------------------+
+|max(salary_in_usd)|
++------------------+
+|            423000|
++------------------+
+
+//
+
+Aggregating in RDDs
+Now that you have conducted analytics with DataFrames in PySpark, let's briefly do a similar task with an RDD. Using the provided code, get the sum of the values of an RDD in PySpark.
+
+A Spark session called spark has already been made for you.
+
+Create an RDD from the provided DataFrame.
+Apply the provided Lambda Function to the keys of the RDD.
+Collect the results of the aggregation.
+
+Hint
+Use the .map() method to build the RDD.
+Use the reduceByKey() method to apply this Lambda function.
+Use collect() to show the results of the aggregation.
+
+# DataFrame Creation
+data = [("HR", "3000"), ("IT", "4000"), ("Finance", "3500")]
+columns = ["Department", "Salary"]
+df = spark.createDataFrame(data, schema=columns)
+
+# Map the DataFrame to an RDD
+rdd = df.rdd.map(lambda row: (row["Department"], row["Salary"]))
+
+# Apply a lambda function to get the sum of the DataFrame
+rdd_aggregated = rdd.reduceByKey(lambda x, y: x + y)
+
+# Show the collected Results
+print(rdd_aggregated.collect())
+
+//
+
+Complex Aggregations
+To get you familiar with more of the built in aggregation methods, let's do a slightly more complex aggregation! The goal is to merge all these commands into a single line.
+
+Remember, a SparkSession called spark is already in your workspace, along the Spark DataFrame salaries_df.
+
+Calculate the average salaries of large US companies using the "salary_in_usd" column.
+Calculate the total salaries of large US companies.
+
+Hint
+You can use the .avg("col") to find the average of the column "col".
+You can use the .sum() method to calculate the sum.
+
+# Average salaries at large US companies
+salaries_df.filter(salaries_df.company_size == "L").filter(salaries_df.company_location == "US").groupBy().avg("salary_in_usd").show()
+
+# Set a large companies variable for other analytics
+large_companies=salaries_df.filter(salaries_df.company_size == "L").filter(salaries_df.company_location == "US")
+
+# Total salaries in usd
+large_companies.groupBy().sum("salary_in_usd").show()
+
+O/P:-----------
+
++------------------+
+|avg(salary_in_usd)|
++------------------+
+|165465.82197614992|
++------------------+
+
++------------------+
+|sum(salary_in_usd)|
++------------------+
+|         194256875|
++------------------+
+
+//
+
+Bringing it all together I
+You've built a solid foundation in PySpark, explored its core components, and worked through practical scenarios involving Spark SQL, DataFrames, and advanced operations. Now it’s time to bring it all together. Over the next two exercises, you're going to make a SparkSession, a Dataframe, cache that Dataframe, conduct analytics and explain the outcome!
+
+Import SparkSession from pyspark.sql.
+Make a new SparkSession called final_spark using SparkSession.builder.getOrCreate().
+Print my_spark to the console to verify it's a SparkSession.
+Create a new DataFrame from a preloaded schema and column definition.
+
+Hint
+Make sure you import SparkSession from pyspark.sql.
+Try using .getOrCreate() to get a new SparkSession.
+Just use print() to see your SparkSession.
+Use spark.createDataFrame() to create a new Dataframe
+
+# Import SparkSession from pyspark.sql
+from pyspark.sql import SparkSession
+
+# Create my_spark
+my_spark = SparkSession.builder.appName("final_spark").getOrCreate()
+
+# Print my_spark
+print(my_spark)
+
+# Load dataset into a DataFrame
+df = my_spark.createDataFrame(data, schema=columns)
+
+df.show()
+
+O/P:------------
+
+<pyspark.sql.session.SparkSession object at 0x7f79aa7b2640>
++-----+----------+------+
+| Name|Department|Salary|
++-----+----------+------+
+|Alice|        HR|  3000|
+|  Bob|        IT|  4000|
+|Cathy|        HR|  3500|
++-----+----------+------+
+
+//
+
+Bringing it all together II
+Create a DataFrame, apply transformations, cache it, and check if it’s cached. Then, uncache it to release memory. For this exercise a spark session has been made for you! Look carefully at the outcome of the .explain() method to understand what the outcome is!
+
+Cache the df DataFrame.
+Explain the processing of the agg_result DataFrame.
+Unpersist the cached df DataFrame after processing.
+
+Hint
+Use the .cache() method to cache a DataFrame.
+Be sure to use the .explain() method.
+Make sure you unpersist() your cached DataFrame.
+
+# Cache the DataFrame
+df.cache()
+
+# Perform aggregation
+agg_result = df.groupBy("Department").sum("Salary")
+agg_result.show()
+
+# Analyze the execution plan
+agg_result.explain()
+
+# Uncache the DataFrame
+df.unpersist()
+
+O/P:-------
+
++----------+-----------+
+|Department|sum(Salary)|
++----------+-----------+
+|        HR|       6500|
+|        IT|       4000|
++----------+-----------+
+
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=false
++- HashAggregate(keys=[Department#1], functions=[sum(Salary#2L)])
+   +- Exchange hashpartitioning(Department#1, 200), ENSURE_REQUIREMENTS, [id=#60]
+      +- HashAggregate(keys=[Department#1], functions=[partial_sum(Salary#2L)])
+         +- InMemoryTableScan [Department#1, Salary#2L]
+               +- InMemoryRelation [Name#0, Department#1, Salary#2L], StorageLevel(disk, memory, deserialized, 1 replicas)
+                     +- *(1) Scan ExistingRDD[Name#0,Department#1,Salary#2L]
+
+DataFrame[Name: string, Department: string, Salary: bigint]
+
+//
+
 
 
