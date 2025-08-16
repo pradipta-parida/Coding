@@ -1,0 +1,104 @@
+//
+The first test suite
+In this exercise, you will write the first test suite that includes the types of tests that you have learned using the pytest library.
+
+The function multiple_of_two checks whether the num is a multiple of 2 or not. You will implement and run two regular assert tests.
+
+The pytest package has already been imported.
+
+1
+2
+Write an assert statement that is expected to be True.
+
+Hint
+To write a test, use the assert statement, followed by the function call and the condition.
+
+def multiple_of_two(num):
+    if num == 0:
+        raise(ValueError)
+    return num % 2 == 0
+
+def test_numbers():
+    # Write "True" the test below
+    assert multiple_of_two(2) is True
+
+//
+
+The first test suite
+In this exercise, you will write the first test suite that includes the types of tests that you have learned using the pytest library.
+
+The function multiple_of_two checks whether the num is a multiple of 2 or not. You will implement and run two regular assert tests.
+
+The pytest package has already been imported.
+
+2
+Write an assert statement that is expected to be False.
+
+Hint
+You can do this exactly the same way as before.
+Pass such value, so the function returns False.
+
+def multiple_of_two(num):
+    if num == 0:
+        raise(ValueError)
+    return num % 2 == 0
+
+def test_numbers():
+    assert multiple_of_two(2) is True
+    # Write the "False" test below
+    assert multiple_of_two(3) is False
+
+//
+
+pytest.raises
+In this exercise, you will continue writing the first test suite using the pytest library.
+
+The function multiple_of_two checks whether the num is a multiple of 2 or not. In this exercise, you will implement a test that expects to raise an Exception.
+
+The pytest package has been imported.
+
+Define a context manager for the exception test.
+Write a test to check that the zero input multiple_of_two(num=0) results in the ValueError exception.
+
+Hint
+Use the with statement and pytest.raises to define the context manager.
+Call the function within the with context.
+
+def multiple_of_two(num):
+    if num == 0:
+        raise(ValueError)
+    return num % 2 == 0
+
+def test_zero():
+  	# Add a context for an exception test here
+    with pytest.raises(ValueError):
+      	# Check zero input below
+        multiple_of_two(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
