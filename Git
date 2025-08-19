@@ -1,0 +1,57 @@
+> Git is a free and open-source version control system that lets you track changes in your code, collaborate with others, and roll back to previous versions if needed.
+
+>  To create a folder --->  mkdir Devops-demo
+
+>  To go inside that folder ---> cd Devops-demo
+
+>  To initialize empty git folder ---> git init
+
+>  To clone existiung repository ---> git clone <copy-paste the reporsitory https:// from github>
+
+>  To check the status ---> git status 
+
+>  Before commiting files, we need to stage them ---> git add demo.txt
+
+>  Committing changes ---> git commit -m "<Commit message>"
+
+>  To remove file from local repository ---> git rm demo.txt
+
+>  To force remove if its staged ---> git rm -f demo.txt
+
+>  Reviewing commit history ---> git log
+
+>  Reviewing commit history in a compact view ---> git log --oneline
+
+>  To Review detail changes ---> git log -p
+
+>  To visualize branches and merges  ---> git log --graph
+
+>  To list out all the branches ---> git branch 
+
+>  To checkout a branch or swich to another branch ---> git checkout <branch name to which you are switching to> 
+
+>  To create and checkout/switch to another branch ---> git checkout -b <new branch name creation and switching to>
+
+>  To merge branch into current branch ---> git merge <branch_name>
+
+>  To delete any branch ---> git branch -d <branch_name>
+   ** If you are deleting the branch in which you are currently working then it will trigger error. So, checkout from that branch to main branch and then proceed with above syntax.
+
+>  To clear the contents on the bash ---> clear
+
+>  To checkout to the main/master branch ---> git checkout <master/main>
+
+>  To check if you are on the Main branch ---> git switch <master/main>
+
+>  To fix last commit messages ---> git commit --amend -m "updated message"
+
+>  To view the tags ---> git tag
+
+>  To add a tag ---> git tag -a v1.0 -m "Version 1.0"
+
+
+
+
+
+
+
