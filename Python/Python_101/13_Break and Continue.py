@@ -13,11 +13,11 @@ students = ["ram", "shyam", "kishan", "radha", "radhika"]
 for item in students:
     if item == "radha":
         break
-    print(item)
+    print(item) # ram, shyam, kishan
 
 # Print names excluding "kishan"
 # This will print all names except "kishan"
 for item in students:
     if item == "kishan":
         continue
-    print(item)
+    print(item) # ram, shyam, radha, radhika

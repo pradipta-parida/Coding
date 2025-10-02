@@ -8,7 +8,6 @@ For convenience, use '' for characters
 and "" for strings
 
 """
-from traceback import print_tb
 
 name = "Tony Stark"
 
