@@ -48,10 +48,3 @@
 >  To view the tags ---> git tag
 
 >  To add a tag ---> git tag -a v1.0 -m "Version 1.0"
-
-
-
-
-
-
-
