@@ -1,0 +1,23 @@
+
+[
+    {
+        "id" : 1,
+        "name" : "Pradipta",
+        "age" : 27,
+        "profession" : "Author"
+    },
+
+    {
+        "id" : 2,
+        "name" : "Kumar",
+        "age" : 26,
+        "profession" : "Editor"
+    },
+
+    {
+        "id" : 3,
+        "name" : "Parida",
+        "age" : 31,
+        "profession" : "Painter"
+    }
+]

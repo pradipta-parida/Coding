@@ -1,0 +1,13 @@
+{
+    "name" : "Pradipta",
+    "ageCount" : 27,
+    "isMale" : true,
+    "companyWorked" : ["Facebook", "Apple", "Amazon"],
+    "physicalAttributes" : {
+        "height" : 10,
+        "weight" : 11,
+        "Eyes" : "Brown",
+        "isMale" : false
+    }
+
+}
