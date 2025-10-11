@@ -29,8 +29,8 @@ print(exp(3))
 # User-defined functions - Those are customized/created by user
 ''' Basic syntax to define functions
 
-def function_name(parameters):
-    // do something
+def function_name(function_parameters, function_parameters):
+    // function_body
 
 '''
 # Initialize the function
