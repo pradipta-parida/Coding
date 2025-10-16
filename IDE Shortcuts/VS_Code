@@ -1,0 +1,9 @@
+>   To open VS code for  a particular project folder:
+
+    1. Navigate to that folder
+    2. Inside that on the top directory bar, type cmd
+    3. A command prompt will open with location inside the same directory
+    4. Now inside the command prompt, type below code and hit enter
+        code .
+    5. This will open vs code for that particular directory
+
