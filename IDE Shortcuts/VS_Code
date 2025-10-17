@@ -7,3 +7,7 @@
         code .
     5. This will open vs code for that particular directory
 
+>   To bring up command palette in vs code
+
+    1. In vs code, type below command
+        ctrl + shift + p
