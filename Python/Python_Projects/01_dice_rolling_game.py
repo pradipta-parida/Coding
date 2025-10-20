@@ -10,24 +10,6 @@
     #   Print invalid choice
 """
 
-"""
-A formatted string, or f-string, in Python is a type of string literal that makes it easy to embed variables,
-expressions, and even function calls directly into strings by enclosing them in curly braces {} and prefixing the string with f. F-strings were introduced in Python 3.6 and are now considered the modern, efficient way to perform string formatting.
-
-Syntax and Basic Example
-To use an f-string, prefix the string with the letter f and include any variable or expression inside curly braces.
-
-Example:
-
-python
-name = "Alice"
-age = 30
-print(f"Hello, {name}. You are {age} years old.")
-This will display: Hello, Alice. You are 30 years old.
-"""
-
-
-
 # Import Module for random number generation
 import random
 
