@@ -17,7 +17,7 @@ print(f"Hello, {name}. You are {age} years old.")
 O/P: Hello, Alice. You are 30 years old.
 """
 
-# Sample code
+# Sample temperature code
 f_temp = 67
 
 # Hard coding the value. It's not best practice.

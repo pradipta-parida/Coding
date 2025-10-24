@@ -10,22 +10,22 @@ Arithmetic Operators:
 ** ----> Exponentiation of two numbers (power operator)
 
 """
-a = float(input("Enter first nubmer: "))
-b = float(input("Enter second nubmer: "))
+a = float(input("Enter first number: "))
+b = float(input("Enter second number: "))
 
 # Different Arithmetic Operators in python
 Sum = a + b
 Difference = a - b
 Product = a * b
-Divison = a / b
-Dvison_Absolute = a//b
-Remainder = a % b
+Division = a / b
+Division_Absolute = a//b # Also known as Floor Division
+Remainder = a % b # Also known as Modulus operator
 Power = a ** b
 
-print("Sum of a + b = " + str(Sum))
-print("Difference of a + b = " + str(Difference))
-print("Product of a * b = " + str(Product))
-print("Divison of a / b = " + str(Divison))
-print("Absolute Divison of a // b = " + str(Dvison_Absolute))
-print("Remainder of a % b = " + str(Remainder))
-print("Power of a ** b = " + str(Power))
+print(f"Sum of a + b = {str(Sum)}")
+print(f"Difference of a - b = {str(Difference)}")
+print(f"Product of a * b = {str(Product)}")
+print(f"Division of a / b = {str(Division)}")
+print(f"Absolute Division of a // b = {str(Division_Absolute)}")
+print(f"Remainder of a % b = {str(Remainder)}")
+print(f"Power of a ** b = {str(Power)}")
