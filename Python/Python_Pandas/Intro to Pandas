@@ -1,0 +1,50 @@
+> Reference : https://github.com/techwithtim/PanadasTutorial.git
+
+> To work with Pandas, run below code in terminal;
+
+    pip install pandas
+
+> Pandas has two main types;
+    1. Dataframe -
+    2. Series - A series is like a row or a column
+
+> Whenever we are working with Pandas, we need to first load the data.
+  More conveniently, we can work with excel spreadsheet or .csv(comma separated values) file
+
+> Pandas are good at representing two dimensional data. So, where you have some rows and columns.
+
+> Loading a DataFrame;
+
+df = pd.read_csv('data.csv')        # Load from CSV
+df = pd.read_excel('data.xlsx')     # Load from Excel
+df = pd.DataFrame(data_dict)        # Load from dictionary
+
+> To manually create a dataframe using dictionary;
+
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie'],
+    'Age': [25, 30, 35],
+    'Country': ['USA', 'Canada', 'UK']
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+> A python script file is not the best way of working with pandas because a lot of times when we are
+dealing with pandas, we want to really quickly be able to run and execute different parts of our code and kind of
+analyze, clean and interpret data. Instead use jupyter notebook.
+
+> Now, the interesting thing when we are using the Jupyter notebook here is that we have these different cells.
+. So, you can see that I kind of have this cell that's created and I can just run and execute the cell
+
+> Exploring a DataFrame:
+
+df.head()        # To print First 5 rows
+df.tail()        # Last 5 rows
+df.info()        # Column types and non-null values
+df.describe()    # Summary stats
+df.columns       # Column names
+df.index         # Row indices
+

@@ -23,6 +23,7 @@ print(marks[6])  # [6] index does not exist in above list
 
 # To print a subset or part of list.
 print(marks[1:4]) # This will include only index of 1, 2, 3 only not 4
+# O/P: [88, 47, 70]
 
 # List using Loop
 marks = [95, 88, 47, 70, 55, "maths"]
