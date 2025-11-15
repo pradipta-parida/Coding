@@ -12,7 +12,47 @@
   More conveniently, we can work with excel spreadsheet or .csv(comma separated values) file
 
 > Pandas are good at representing two dimensional data. So, where you have some rows and columns.
+-----------------------------------------------------------------------------------------------------------------
+Step 1: Loading the Data (Sample data: Refer Test_Data.png)
 
+import pandas as pd
+df = pd.read_csv('sales_data.csv')
+
+
+Step 2: Data Cleaning and Filtering
+
+df_filtered = df[df['Sales']>100]
+
+O/P: Refer Data_cleaning.png
+
+
+Step 3: Grouping and Aggregation
+
+category_sales = df_filtered.groupby('Category')['Sales'].sum()
+print(category_sales)
+
+O/P:
+Category Sales
+Apparel         1200.00
+Electronics     850.00
+
+
+Step 4: Data Visualization
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('sales_data.csv')
+category_sales = df.groupby('Category')['Sales'].sum()
+category_sales.plot(kind='bar')
+plt.show()
+
+O/P: Refer to Data_visualization.png
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------
 > Loading a DataFrame;
 
 df = pd.read_csv('data.csv')        # Load from CSV
@@ -47,4 +87,5 @@ df.info()        # Column types and non-null values
 df.describe()    # Summary stats
 df.columns       # Column names
 df.index         # Row indices
+
 
