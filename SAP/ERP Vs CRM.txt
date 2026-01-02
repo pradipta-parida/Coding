@@ -1,0 +1,20 @@
+>   ERP                                                              CRM
+
+1.  ERP are software solutions that                        CRM is a software that automates the customer
+    helps organizations to manage                          communication with the organization
+    their business processes.
+
+2. It is a centralized system that streamline              CRM is the single platform for turning customers into
+   all processes                                           a potential client
+
+3. ERP is termed as super set of SAP                       It is the subset of SAP. Salesforce is also another CRM tool
+
+4. ERP is a web-based application.                         CRM is a web-based solution
+
+5. They support the back office activities                 They support the front office activities
+
+6. ERP systems are more focused about the                  CRM systems are focused about the customer relations
+   organization growth                                     with the organization
+
+7. Examples - NetSuite ERP, Scoro, AcTouch,                Examples - Salesforce, Zoho, Agile, Hubspot, Apptivo an etc.
+              Oracle etc.
